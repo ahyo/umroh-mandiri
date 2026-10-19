@@ -64,6 +64,11 @@
       parts.map(([k, x]) => `<dt>${k}</dt><dd>${rp(x)}</dd>`).join('');
   }
   form.addEventListener('input', calc);
+  document.querySelectorAll('.presets .chip').forEach(btn => btn.addEventListener('click', () => {
+    form.elements.hmed.value = btn.dataset.med;
+    form.elements.hmak.value = btn.dataset.mak;
+    calc();
+  }));
   calc();
 
   // Checklist

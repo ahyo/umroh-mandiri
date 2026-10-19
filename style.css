@@ -208,6 +208,47 @@ details[open] summary { border-bottom: 1px solid var(--border); }
 .dua .lat { font-style: italic; margin: 0 0 4px; color: var(--primary); font-weight: 600; }
 .dua .tr { margin: 0; color: var(--muted); font-size: .95rem; }
 
+/* Hotels */
+.hotel-note { margin-bottom: 28px; padding: 16px 20px; }
+.hotel-note p { margin: 0; }
+.hotel-cols { align-items: start; }
+.city { font-size: 1.3rem; }
+.tier {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 16px 18px; margin-bottom: 14px; box-shadow: var(--shadow);
+}
+.tier-rec { border-color: color-mix(in srgb, var(--primary) 50%, var(--border)); border-width: 2px; }
+.tier-head { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 8px; font-size: .85rem; }
+.tier-tag { font-weight: 800; font-size: .78rem; padding: 3px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: .05em; }
+.tag-hemat { background: var(--primary-soft); color: var(--primary); }
+.tag-menengah { background: var(--primary); color: var(--bg); }
+.tag-mewah { background: var(--accent-soft); color: var(--accent); }
+.hotels { list-style: none; margin: 0; padding: 0; }
+.hotels li {
+  display: flex; justify-content: space-between; gap: 12px; padding: 10px 0;
+  border-top: 1px dashed var(--border);
+}
+.hotels li:first-child { border-top: 0; }
+.hotels p { margin: 2px 0 0; font-size: .88rem; color: var(--muted); }
+.price {
+  flex: none; font-weight: 800; font-size: .88rem; color: var(--primary); white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.worth {
+  background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  border-radius: var(--radius); padding: 18px 20px;
+}
+.worth p { margin: 0 0 6px; }
+.worth-label { font-weight: 800; color: var(--accent); }
+.worth-combo { font-size: 1.05rem; }
+
+.presets { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 16px; }
+.chip {
+  font: inherit; font-weight: 700; font-size: .88rem; cursor: pointer; color: var(--primary);
+  background: var(--primary-soft); border: 1px solid transparent; border-radius: 999px; padding: 6px 14px;
+}
+.chip:hover { border-color: var(--primary); }
+
 /* Calculator */
 .calc { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; align-items: start; }
 .calc-form {
@@ -269,6 +310,7 @@ details[open] summary { border-bottom: 1px solid var(--border); }
   .nav.open { display: flex; }
   .nav a { padding: 10px 12px; }
   .theme-btn { align-self: flex-start; margin-top: 6px; }
+  .hotels li { flex-direction: column; gap: 2px; }
   .grid-2 { grid-template-columns: 1fr; }
   .step { grid-template-columns: 1fr; gap: 10px; padding: 18px; }
   .step-num { width: 40px; height: 40px; font-size: 1.1rem; }
