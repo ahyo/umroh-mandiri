@@ -56,20 +56,24 @@
     const v = Object.fromEntries([...new FormData(form)].map(([k, x]) => [k, Math.max(0, parseFloat(x) || 0)]));
     const orang = Math.max(1, v.orang);
     const days = v.nmed + v.nmak + 1;
+    const sar = n => 'SAR ' + Math.round(n).toLocaleString('id-ID');
+    const xOrang = ' × ' + orang + ' orang';
+    const xKamar = ' × ' + v.kamar + ' kamar';
     const parts = [
-      ['Tiket pesawat', v.tiket * orang],
-      ['Visa + asuransi', v.visa * v.kurs * orang],
-      ['Hotel Madinah', v.hmed * v.nmed * v.kamar * v.kurs],
-      ['Hotel Makkah', v.hmak * v.nmak * v.kamar * v.kurs],
-      ['Transportasi lokal', v.trans * v.kurs * orang],
-      ['Makan (' + days + ' hari)', v.makan * days * v.kurs * orang],
-      ['Vaksin, SIM, lain-lain', v.lain * orang],
+      ['Tiket pesawat', rp(v.tiket) + xOrang, v.tiket * orang],
+      ['Visa + asuransi', sar(v.visa) + xOrang, v.visa * v.kurs * orang],
+      ['Hotel Madinah', sar(v.hmed) + ' × ' + v.nmed + ' malam' + xKamar, v.hmed * v.nmed * v.kamar * v.kurs],
+      ['Hotel Makkah', sar(v.hmak) + ' × ' + v.nmak + ' malam' + xKamar, v.hmak * v.nmak * v.kamar * v.kurs],
+      ['Transportasi lokal', sar(v.trans) + xOrang, v.trans * v.kurs * orang],
+      ['Makan', sar(v.makan) + ' × ' + days + ' hari' + xOrang, v.makan * days * v.kurs * orang],
+      ['Vaksin, SIM, lain-lain', rp(v.lain) + xOrang, v.lain * orang],
     ];
-    const total = parts.reduce((s, p) => s + p[1], 0);
+    const total = parts.reduce((s, p) => s + p[2], 0);
     document.getElementById('calc-total').textContent = rp(total);
     document.getElementById('calc-per').textContent = rp(total / orang) + ' / orang';
     document.getElementById('calc-breakdown').innerHTML =
-      parts.map(([k, x]) => `<dt>${k}</dt><dd>${rp(x)}</dd>`).join('');
+      parts.map(([k, d, x]) => `<dt>${k}<small>${d}</small></dt><dd>${rp(x)}</dd>`).join('') +
+      `<dt class="calc-kurs">Kurs: 1 SAR = ${rp(v.kurs)}</dt>`;
   }
   form.addEventListener('input', calc);
   document.querySelectorAll('.presets .chip').forEach(btn => btn.addEventListener('click', () => {

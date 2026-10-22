@@ -273,6 +273,8 @@ details[open] summary { border-bottom: 1px solid var(--border); }
 .calc-per { margin: 0 0 16px; opacity: .9; font-variant-numeric: tabular-nums; }
 .calc-breakdown { margin: 0 0 14px; display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; font-size: .92rem; }
 .calc-breakdown dt { opacity: .85; }
+.calc-breakdown dt small { display: block; font-size: .8rem; opacity: .8; font-variant-numeric: tabular-nums; }
+.calc-breakdown .calc-kurs { grid-column: 1 / -1; font-size: .8rem; opacity: .7; margin-top: 4px; }
 .calc-breakdown dd { margin: 0; font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; }
 
 /* Checklist */
