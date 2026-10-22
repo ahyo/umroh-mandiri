@@ -44,7 +44,15 @@
   // Cost calculator
   const form = document.getElementById('calc');
   const rp = n => 'Rp ' + Math.round(n).toLocaleString('id-ID');
-  function calc() {
+  const PER_KAMAR = 4;
+  function calc(e) {
+    // Satu kamar maksimal 4 orang: kamar ikut jumlah jemaah, boleh ditambah manual
+    const minKamar = Math.ceil(Math.max(1, parseFloat(form.elements.orang.value) || 0) / PER_KAMAR);
+    const kamarEl = form.elements.kamar;
+    kamarEl.min = minKamar;
+    if ((e && e.target === form.elements.orang) || (parseFloat(kamarEl.value) || 0) < minKamar) {
+      kamarEl.value = minKamar;
+    }
     const v = Object.fromEntries([...new FormData(form)].map(([k, x]) => [k, Math.max(0, parseFloat(x) || 0)]));
     const orang = Math.max(1, v.orang);
     const days = v.nmed + v.nmak + 1;
