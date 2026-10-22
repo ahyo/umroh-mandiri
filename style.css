@@ -208,6 +208,30 @@ details[open] summary { border-bottom: 1px solid var(--border); }
 .dua .lat { font-style: italic; margin: 0 0 4px; color: var(--primary); font-weight: 600; }
 .dua .tr { margin: 0; color: var(--muted); font-size: .95rem; }
 
+/* Penghitung tawaf & sa'i */
+.counter {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 16px 18px; margin: 14px 0; box-shadow: var(--shadow);
+}
+.counter-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; margin-bottom: 10px; }
+.counter-status { color: var(--primary); font-weight: 700; font-size: .95rem; }
+.counter-dots { display: flex; gap: 6px; margin-bottom: 12px; }
+.counter-dots span { flex: 1; height: 8px; border-radius: 999px; background: var(--border); transition: background .2s; }
+.counter-dots span.on { background: var(--primary); }
+.counter-tap {
+  width: 100%; min-height: 150px; border: 0; border-radius: 14px; cursor: pointer;
+  background: var(--primary); color: var(--bg); font: inherit; touch-action: manipulation;
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; align-content: center; gap: 0 6px;
+  -webkit-tap-highlight-color: transparent; user-select: none;
+}
+.counter-tap:active { transform: scale(.98); }
+.counter-num { font-size: 4rem; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.counter-of { font-size: 1.5rem; font-weight: 700; opacity: .8; }
+.counter-tap small { flex-basis: 100%; text-align: center; margin-top: 8px; opacity: .85; font-size: .9rem; }
+.counter.done .counter-tap { background: var(--accent); cursor: default; }
+.counter-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.counter-actions .small-btn { margin-top: 12px; }
+
 /* Hotels */
 .hotel-note { margin-bottom: 28px; padding: 16px 20px; }
 .hotel-note p { margin: 0; }

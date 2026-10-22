@@ -83,6 +83,47 @@
   }));
   calc();
 
+  // Penghitung putaran tawaf & sa'i (tersimpan agar aman jika halaman dimuat ulang)
+  const statusText = {
+    tawaf: n => n === 0 ? 'Mulai dari garis Hajar Aswad'
+      : n >= 7 ? 'Selesai ✓ Lanjut sholat 2 rakaat'
+      : 'Sedang putaran ke-' + (n + 1),
+    sai: n => n === 0 ? 'Mulai dari Shafa'
+      : n >= 7 ? 'Selesai di Marwah ✓ Lanjut tahallul'
+      : 'Perjalanan ke-' + (n + 1) + ': ' + (n % 2 ? 'Marwah → Shafa' : 'Shafa → Marwah'),
+  };
+  document.querySelectorAll('.counter').forEach(box => {
+    const kind = box.dataset.counter;
+    const max = +box.dataset.max;
+    const key = 'umroh-counter-' + kind;
+    let n = Math.min(max, parseInt(store.get(key), 10) || 0);
+    const num = box.querySelector('.counter-num');
+    const status = box.querySelector('.counter-status');
+    const tap = box.querySelector('.counter-tap');
+    const dots = box.querySelector('.counter-dots');
+    dots.innerHTML = '<span></span>'.repeat(max);
+    function render() {
+      num.textContent = n;
+      status.textContent = statusText[kind](n);
+      [...dots.children].forEach((d, i) => d.classList.toggle('on', i < n));
+      box.classList.toggle('done', n >= max);
+      tap.disabled = n >= max;
+      store.set(key, n);
+    }
+    tap.addEventListener('click', () => {
+      if (n >= max) return;
+      n++;
+      if (navigator.vibrate) navigator.vibrate(n >= max ? [80, 60, 80] : 40);
+      render();
+    });
+    box.querySelector('[data-act="undo"]').addEventListener('click', () => { if (n > 0) { n--; render(); } });
+    box.querySelector('[data-act="reset"]').addEventListener('click', () => {
+      if (n > 0 && !confirm('Ulang hitungan dari 0?')) return;
+      n = 0; render();
+    });
+    render();
+  });
+
   // Checklist
   const groups = {
     'Dokumen': [
@@ -92,7 +133,7 @@
       'Tiket pesawat PP',
       'Sertifikat vaksin meningitis (ICV)',
       'Surat keterangan sehat',
-      'Bukti lapor perjalanan ke Kementerian',
+      'Bukti pembelian layanan (penyedia terdaftar)',
       'Fotokopi paspor & pas foto cadangan',
       'Kartu debit/kredit + uang Riyal',
     ],
