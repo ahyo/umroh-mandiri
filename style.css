@@ -208,6 +208,74 @@ details[open] summary { border-bottom: 1px solid var(--border); }
 .dua .lat { font-style: italic; margin: 0 0 4px; color: var(--primary); font-weight: 600; }
 .dua .tr { margin: 0; color: var(--muted); font-size: .95rem; }
 
+/* Al-Qur'an */
+.q-cta {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 20px; padding: 16px 20px;
+  background: var(--surface); border: 2px solid var(--accent); border-radius: var(--radius);
+  color: var(--text); text-decoration: none; box-shadow: var(--shadow);
+}
+.q-cta:hover { background: var(--accent-soft); }
+.q-cta-ar { font-family: "Amiri", serif; font-size: 2rem; color: var(--accent); line-height: 1; flex: none; }
+.quran-page { padding-bottom: 76px; }
+.q-main { padding-top: 32px; }
+.q-title { font-size: clamp(1.6rem, 4vw, 2.2rem); letter-spacing: -.02em; }
+.q-sub { max-width: 70ch; }
+.q-controls {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 2fr; gap: 12px; align-items: end;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 16px; margin: 20px 0; box-shadow: var(--shadow);
+}
+.q-controls label { min-width: 0; display: grid; gap: 6px; font-size: .85rem; font-weight: 600; color: var(--muted); }
+.q-controls select, .q-controls input {
+  font: inherit; font-size: .95rem; color: var(--text); background: var(--bg);
+  border: 1px solid var(--border); border-radius: 8px; padding: 9px 10px; width: 100%; min-width: 0;
+}
+.q-mode { grid-column: 1 / -1; display: flex; gap: 8px; flex-wrap: wrap; }
+.q-mode .chip.on { background: var(--primary); color: var(--bg); }
+.q-sheet {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 18px 22px 24px; max-width: 760px; margin: 0 auto;
+  scroll-margin-top: 72px;
+}
+.q-sheet-head {
+  display: flex; justify-content: space-between; gap: 12px; font-size: .85rem; font-weight: 700;
+  color: var(--muted); border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 14px;
+}
+.q-status { text-align: center; padding: 40px 0; }
+.q-surah-head {
+  display: flex; flex-direction: column; align-items: center; gap: 2px; margin: 18px 0 8px; padding: 10px;
+  border: 2px solid var(--accent); border-radius: 12px; background: var(--accent-soft);
+}
+.q-surah-ar { font-family: "Amiri Quran", "Amiri", serif; font-size: 1.6rem; line-height: 1.6; }
+.q-surah-lat { font-size: .82rem; font-weight: 700; color: var(--muted); }
+.q-basmalah { font-family: "Amiri Quran", "Amiri", serif; font-size: 1.6rem; text-align: center; direction: rtl; margin: 6px 0 4px; }
+.q-mushaf, .q-row-ar {
+  font-family: "Amiri Quran", "Amiri", serif; direction: rtl; text-align: justify; text-align-last: center;
+  font-size: 1.75rem; line-height: 2.3; margin: 0 0 6px; color: var(--text);
+}
+.q-row-ar { text-align: right; text-align-last: auto; }
+.q-ayah { cursor: pointer; border-radius: 6px; transition: background .2s; }
+.q-mark { color: var(--accent); cursor: pointer; white-space: nowrap; }
+.q-sajda { color: var(--accent); margin-inline-start: 4px; }
+.q-ayah.playing, .q-row.playing { background: var(--primary-soft); }
+.q-mark.playing { color: var(--primary); }
+.q-row { border-top: 1px solid var(--border); padding: 12px 10px; border-radius: 10px; cursor: pointer; }
+.q-row-head { display: flex; justify-content: space-between; align-items: center; font-size: .8rem; font-weight: 700; color: var(--muted); }
+.q-row-play {
+  border: 1px solid var(--border); background: var(--surface); color: var(--primary);
+  border-radius: 999px; width: 32px; height: 32px; cursor: pointer; font-size: .8rem;
+}
+.q-row-tr { margin: 0; color: var(--muted); font-size: .95rem; }
+.q-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: 10px 0;
+  background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(10px);
+  border-top: 1px solid var(--border);
+}
+.q-bar-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 8px; max-width: 760px; }
+.q-bar .btn { padding: 10px 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.q-bar .btn:disabled { opacity: .4; cursor: default; }
+#q-play { min-width: 110px; }
+
 /* Penghitung tawaf & sa'i */
 .counter {
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
@@ -327,7 +395,7 @@ details[open] summary { border-bottom: 1px solid var(--border); }
   .calc { grid-template-columns: 1fr; }
   .calc-result { position: static; }
 }
-@media (max-width: 760px) {
+@media (max-width: 1080px) {
   .menu-btn { display: block; }
   .nav {
     display: none; position: absolute; top: 60px; left: 0; right: 0; flex-direction: column; align-items: stretch;
@@ -336,6 +404,17 @@ details[open] summary { border-bottom: 1px solid var(--border); }
   .nav.open { display: flex; }
   .nav a { padding: 10px 12px; }
   .theme-btn { align-self: flex-start; margin-top: 6px; }
+  .nav.nav-static {
+    display: flex; position: static; flex-direction: row; align-items: center;
+    background: none; border: 0; padding: 0;
+  }
+  .nav-static .theme-btn { margin-top: 0; }
+}
+@media (max-width: 760px) {
+  .q-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .q-sheet { padding: 14px 14px 20px; }
+  .q-mushaf, .q-row-ar { font-size: 1.5rem; line-height: 2.2; }
+  .q-bar .btn { padding: 10px 8px; font-size: .9rem; }
   .hotels li { flex-direction: column; gap: 2px; }
   .grid-2 { grid-template-columns: 1fr; }
   .step { grid-template-columns: 1fr; gap: 10px; padding: 18px; }

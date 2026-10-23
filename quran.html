@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Al-Qur'an 30 Juz</title>
+  <meta name="description" content="Al-Qur'an 30 juz model mushaf Madinah (604 halaman) dengan terjemahan Bahasa Indonesia dan audio murottal per ayat.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230f5132'/><rect x='18' y='20' width='28' height='28' fill='%23111'/><rect x='18' y='26' width='28' height='4' fill='%23d4a94a'/></svg>">
+</head>
+<body class="quran-page">
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      Umroh Mandiri
+    </a>
+    <nav class="nav nav-static">
+      <a href="index.html#sholat">Bersuci & Sholat</a>
+      <button class="theme-btn" aria-label="Ganti tema terang/gelap" title="Ganti tema">◐</button>
+    </nav>
+  </div>
+</header>
+
+<main class="section q-main">
+  <div class="wrap">
+    <h1 class="q-title">Al-Qur’an 30 Juz</h1>
+    <p class="muted q-sub">Mushaf Madinah 604 halaman · terjemahan Kemenag RI · audio murottal per ayat. Ketuk ayat untuk mendengarkan mulai dari ayat itu.</p>
+
+    <form class="q-controls" id="q-controls" onsubmit="return false">
+      <label>Surah
+        <select id="q-surah"></select>
+      </label>
+      <label>Juz
+        <select id="q-juz"></select>
+      </label>
+      <label>Halaman
+        <input type="number" id="q-page" min="1" max="604" inputmode="numeric">
+      </label>
+      <label>Qari
+        <select id="q-qari"></select>
+      </label>
+      <div class="q-mode" role="group" aria-label="Tampilan">
+        <button type="button" class="chip" data-mode="mushaf">Mushaf</button>
+        <button type="button" class="chip" data-mode="terjemah">Dengan terjemahan</button>
+      </div>
+    </form>
+
+    <article class="q-sheet" id="q-sheet" aria-live="polite">
+      <header class="q-sheet-head"><span id="q-info"></span><span id="q-pageno"></span></header>
+      <div id="q-body"></div>
+    </article>
+  </div>
+</main>
+
+<div class="q-bar">
+  <div class="wrap q-bar-inner">
+    <button type="button" class="btn btn-ghost" id="q-prev">‹ Sebelumnya</button>
+    <button type="button" class="btn btn-primary" id="q-play">▶ Putar</button>
+    <button type="button" class="btn btn-ghost" id="q-next">Berikutnya ›</button>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>Teks Al-Qur’an: Tanzil (rasm Utsmani) · Terjemahan: Kementerian Agama RI · Data & audio: <a href="https://alquran.cloud" target="_blank" rel="noopener">AlQuran.cloud</a> / Islamic Network. Membutuhkan koneksi internet.</p>
+    <p><a href="index.html">← Kembali ke panduan umroh</a></p>
+  </div>
+</footer>
+
+<script src="quran.js"></script>
+</body>
+</html>
