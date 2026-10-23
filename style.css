@@ -228,8 +228,19 @@ details[open] summary { border-bottom: 1px solid var(--border); }
 .q-controls label { min-width: 0; display: grid; gap: 6px; font-size: .85rem; font-weight: 600; color: var(--muted); }
 .q-controls select, .q-controls input {
   font: inherit; font-size: .95rem; color: var(--text); background: var(--bg);
-  border: 1px solid var(--border); border-radius: 8px; padding: 9px 10px; width: 100%; min-width: 0;
+  border: 1px solid var(--border); border-radius: 8px; padding: 0 10px; width: 100%; min-width: 0;
+  height: 42px; line-height: normal;
 }
+.q-controls select {
+  -webkit-appearance: none; appearance: none; padding-right: 32px; cursor: pointer;
+  text-overflow: ellipsis;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+    linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position: right 16px center, right 11px center;
+  background-size: 5px 5px; background-repeat: no-repeat;
+}
+.q-controls select:focus, .q-controls input:focus { outline: 2px solid var(--primary); outline-offset: 1px; }
 .q-mode { grid-column: 1 / -1; display: flex; gap: 8px; flex-wrap: wrap; }
 .q-mode .chip.on { background: var(--primary); color: var(--bg); }
 .q-sheet {
