@@ -208,6 +208,37 @@ details[open] summary { border-bottom: 1px solid var(--border); }
 .dua .lat { font-style: italic; margin: 0 0 4px; color: var(--primary); font-weight: 600; }
 .dua .tr { margin: 0; color: var(--muted); font-size: .95rem; }
 
+/* Peta */
+.peta-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.peta-tabs .chip { font-size: 1rem; padding: 10px 20px; }
+.peta-tabs .chip.on { background: var(--primary); color: var(--bg); }
+.peta-box {
+  height: 460px; border-radius: var(--radius); border: 1px solid var(--border);
+  box-shadow: var(--shadow); z-index: 1; background: var(--bg-alt);
+}
+.peta-box .leaflet-popup-content { font: inherit; font-size: .9rem; line-height: 1.5; }
+.peta-box .leaflet-container { font: inherit; }
+.peta-h2 { margin-top: 32px; }
+.peta-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.peta-item {
+  display: flex; gap: 14px; align-items: flex-start; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 14px 16px; box-shadow: var(--shadow);
+}
+.peta-item:hover { border-color: var(--primary); }
+.peta-item p { margin: 4px 0 6px; color: var(--muted); font-size: .92rem; }
+.peta-item a { font-size: .88rem; font-weight: 600; }
+.peta-pin {
+  flex: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
+  border: 1px solid var(--border); background: var(--primary-soft); font-size: 1.1rem;
+}
+.peta-tag {
+  font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .04em;
+  color: var(--primary); background: var(--primary-soft); padding: 2px 8px; border-radius: 999px;
+  vertical-align: 2px;
+}
+.tier-note { margin: 0 0 10px; }
+
 /* Al-Qur'an */
 .q-cta {
   display: flex; align-items: center; gap: 16px; margin-bottom: 20px; padding: 16px 20px;
@@ -406,7 +437,7 @@ details[open] summary { border-bottom: 1px solid var(--border); }
   .calc { grid-template-columns: 1fr; }
   .calc-result { position: static; }
 }
-@media (max-width: 1080px) {
+@media (max-width: 1200px) {
   .menu-btn { display: block; }
   .nav {
     display: none; position: absolute; top: 60px; left: 0; right: 0; flex-direction: column; align-items: stretch;
@@ -426,6 +457,7 @@ details[open] summary { border-bottom: 1px solid var(--border); }
   .q-sheet { padding: 14px 14px 20px; }
   .q-mushaf, .q-row-ar { font-size: 1.5rem; line-height: 2.2; }
   .q-bar .btn { padding: 10px 8px; font-size: .9rem; }
+  .peta-box { height: 340px; }
   .hotels li { flex-direction: column; gap: 2px; }
   .grid-2 { grid-template-columns: 1fr; }
   .step { grid-template-columns: 1fr; gap: 10px; padding: 18px; }

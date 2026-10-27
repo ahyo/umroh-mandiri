@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Peta Makkah & Madinah</title>
+  <meta name="description" content="Peta dan informasi tempat penting di Makkah dan Madinah untuk jemaah umroh: Masjidil Haram, Masjid Nabawi, Bir Ali, Quba, Uhud, Jabal Nur, dan lokasi miqat.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha512-Zcn6bjR/8RZbLEpLIeOwNtzREBAJnUKESxces60Mpoj+2okopSAcSUIUOseddDm0cxnGQzxIR7vJgsLZbdLE3w=="
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230f5132'/><rect x='18' y='20' width='28' height='28' fill='%23111'/><rect x='18' y='26' width='28' height='4' fill='%23d4a94a'/></svg>">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      Umroh Mandiri
+    </a>
+    <nav class="nav nav-static">
+      <a href="index.html#hotel">Hotel</a>
+      <a href="quran.html">Al-Qur’an</a>
+      <button class="theme-btn" aria-label="Ganti tema terang/gelap" title="Ganti tema">◐</button>
+    </nav>
+  </div>
+</header>
+
+<main class="section">
+  <div class="wrap">
+    <h1 class="q-title">Peta Makkah &amp; Madinah</h1>
+    <p class="section-lead">Lokasi masjid, tempat ziarah, miqat, dan stasiun yang akan Anda datangi. Ketuk nama tempat untuk melihat posisinya di peta, atau buka langsung di Google Maps untuk navigasi.</p>
+
+    <div class="peta-tabs" role="group" aria-label="Pilih kota">
+      <button type="button" class="chip" data-kota="makkah">🕋 Makkah</button>
+      <button type="button" class="chip" data-kota="madinah">🕌 Madinah</button>
+    </div>
+
+    <div id="peta" class="peta-box"></div>
+
+    <h2 id="peta-judul" class="peta-h2">Tempat penting</h2>
+    <ul class="peta-list" id="peta-daftar"></ul>
+
+    <div class="grid-2 mt">
+      <div class="card">
+        <h3>🕋 Tentang Makkah</h3>
+        <ul class="dots">
+          <li><strong>Tanah haram.</strong> Non-muslim tidak boleh masuk. Dilarang berburu, menebang pohon, dan memungut barang temuan kecuali untuk diumumkan.</li>
+          <li><strong>Suhu.</strong> Musim panas (Mei–September) bisa 40–45 °C. Musim dingin (Desember–Februari) 15–25 °C dan paling nyaman untuk umroh.</li>
+          <li><strong>Kontur jalan naik-turun.</strong> Hotel yang “500 m dari Haram” bisa terasa jauh karena menanjak. Untuk lansia, utamakan hotel di area datar seperti Ajyad atau Misfalah.</li>
+          <li><strong>Transportasi.</strong> Taksi online (Careem/Uber) paling praktis. Saat jam sholat, jalan di sekitar Haram ditutup sehingga perlu jalan kaki agak jauh.</li>
+          <li><strong>Area kuliner.</strong> Banyak restoran Indonesia di Jl. Ibrahim Khalil, Misfalah, dan Aziziah.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>🕌 Tentang Madinah</h3>
+        <ul class="dots">
+          <li><strong>Lebih tenang.</strong> Kota lebih sejuk, datar, dan tidak sepadat Makkah. Cocok untuk beradaptasi sebelum umroh.</li>
+          <li><strong>Raudhah.</strong> Perlu izin lewat aplikasi Nusuk, gratis, dan kuotanya cepat habis. Ajukan segera setelah jadwal pasti. Satu izin untuk satu kali masuk.</li>
+          <li><strong>Payung pelataran</strong> dibuka saat siang. Lantai marmer tetap panas, jadi bawa kaos kaki dan tas kecil untuk sandal.</li>
+          <li><strong>City tour</strong> Quba, Qiblatain, dan Uhud biasanya 3–4 jam, dengan taksi sewa ±SAR 100–150 per mobil.</li>
+          <li><strong>Kurma Ajwa</strong> termurah di Pasar Kurma (Tamr Market) dekat Masjid Nabawi, bukan di toko sekitar hotel.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card card-warn mt">
+      <h3>Jarak antarkota</h3>
+      <ul class="dots">
+        <li><strong>Madinah → Makkah:</strong> ±450 km. Bus ±6 jam, mobil sewa ±5 jam, kereta cepat Haramain ±2,5 jam. Jangan lupa berhenti di <strong>Bir Ali</strong> untuk miqat.</li>
+        <li><strong>Makkah → Jeddah:</strong> ±85 km, ±1,5 jam dengan mobil. Kereta Haramain ±30 menit ke bandara.</li>
+        <li><strong>Madinah → Bandara MED:</strong> ±15 km, ±25 menit.</li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>Peta: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> · Koordinat hanya perkiraan untuk orientasi, gunakan Google Maps untuk navigasi sebenarnya.</p>
+    <p><a href="index.html">← Kembali ke panduan umroh</a></p>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha512-BwHfrr4c9kmRkLw6iXFdzcdWV/PGkVgiIyIWLLlTSXzWQzxuSg4DiQUCpauz/EWjgk5TYQqX/kvn9pG1NpYfqg=="
+  crossorigin="anonymous"></script>
+<script src="peta.js"></script>
+</body>
+</html>
