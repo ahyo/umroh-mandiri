@@ -382,6 +382,8 @@ details[open] summary { border-bottom: 1px solid var(--border); }
   background: var(--primary-soft); border: 1px solid transparent; border-radius: 999px; padding: 6px 14px;
 }
 .chip:hover { border-color: var(--primary); }
+.calc-cur { margin-bottom: 24px; }
+.calc-cur .chip.on { background: var(--primary); color: var(--bg); }
 
 /* Calculator */
 .calc { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; align-items: start; }
@@ -391,6 +393,12 @@ details[open] summary { border-bottom: 1px solid var(--border); }
   box-shadow: var(--shadow);
 }
 .calc-form label { display: grid; gap: 6px; font-size: .85rem; font-weight: 600; color: var(--muted); }
+.money-in { position: relative; display: block; }
+.money-in .cur, .money-in .cur-fixed {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  font-size: .85rem; font-weight: 800; color: var(--primary); pointer-events: none;
+}
+.calc-form .money-in input { padding-left: 48px; }
 .calc-form input {
   font: inherit; font-size: 1rem; color: var(--text); background: var(--bg);
   border: 1px solid var(--border); border-radius: 8px; padding: 9px 12px; width: 100%;

@@ -41,10 +41,49 @@
   }, { rootMargin: '-40% 0px -55% 0px' });
   sections.forEach(s => spy.observe(s));
 
-  // Cost calculator
+  // Kalkulator biaya: tiap nilai disimpan dalam mata uang aslinya (data-base),
+  // lalu dikonversi hanya saat ditampilkan. Mengubah kurs tidak mengubah angka aslinya.
   const form = document.getElementById('calc');
-  const rp = n => 'Rp ' + Math.round(n).toLocaleString('id-ID');
   const PER_KAMAR = 4;
+  const fmt = n => Math.round(n).toLocaleString('id-ID');
+  const parseNum = v => {
+    const t = String(v).replace(/[^\d,]/g, '').replace(',', '.');
+    return t === '' ? 0 : parseFloat(t) || 0;
+  };
+  // Beri pemisah ribuan sambil menjaga posisi kursor
+  function reformat(el) {
+    const before = el.value.slice(0, el.selectionStart).replace(/\D/g, '').length;
+    const [int, ...rest] = el.value.replace(/[^\d,]/g, '').split(',');
+    const dec = rest.length ? ',' + rest.join('').slice(0, 2) : '';
+    const out = (int ? Number(int).toLocaleString('id-ID') : '') + dec;
+    el.value = out;
+    let seen = 0, i = 0;
+    for (; i < out.length && seen < before; i++) if (/\d/.test(out[i])) seen++;
+    try { el.setSelectionRange(i, i); } catch (e) {}
+  }
+
+  const moneyEls = [...form.querySelectorAll('input[data-money]')];
+  const kursEl = form.elements.kurs;
+  let kurs = parseNum(kursEl.value) || 4400;
+  let cur = store.get('calc-cur') === 'sar' ? 'sar' : 'idr';
+  const canon = {}, base = {};
+  moneyEls.forEach(el => {
+    base[el.name] = el.dataset.base;
+    canon[el.name] = parseNum(el.value);
+  });
+
+  // Nilai sebuah pos dalam mata uang yang sedang ditampilkan
+  const val = name => base[name] === cur ? canon[name]
+    : cur === 'sar' ? canon[name] / (kurs || 1) : canon[name] * kurs;
+  const uang = n => (cur === 'sar' ? 'SAR ' : 'Rp ') + fmt(n);
+
+  function renderInputs(skip) {
+    moneyEls.forEach(el => { if (el !== skip) el.value = fmt(val(el.name)); });
+    if (kursEl !== skip) kursEl.value = fmt(kurs);
+    form.querySelectorAll('.cur').forEach(el => { el.textContent = cur === 'sar' ? 'SAR' : 'Rp'; });
+    document.querySelectorAll('.calc-cur .chip').forEach(b => b.classList.toggle('on', b.dataset.cur === cur));
+  }
+
   function calc(e) {
     // Satu kamar maksimal 4 orang: kamar ikut jumlah jemaah, boleh ditambah manual
     const minKamar = Math.ceil(Math.max(1, parseFloat(form.elements.orang.value) || 0) / PER_KAMAR);
@@ -53,34 +92,55 @@
     if ((e && e.target === form.elements.orang) || (parseFloat(kamarEl.value) || 0) < minKamar) {
       kamarEl.value = minKamar;
     }
-    const v = Object.fromEntries([...new FormData(form)].map(([k, x]) => [k, Math.max(0, parseFloat(x) || 0)]));
-    const orang = Math.max(1, v.orang);
-    const days = v.nmed + v.nmak + 1;
-    const sar = n => 'SAR ' + Math.round(n).toLocaleString('id-ID');
+    const num = n => Math.max(0, parseFloat(form.elements[n].value) || 0);
+    const orang = Math.max(1, num('orang'));
+    const kamar = Math.max(1, num('kamar'));
+    const nmed = num('nmed'), nmak = num('nmak');
+    const days = nmed + nmak + 1;
     const xOrang = ' × ' + orang + ' orang';
-    const xKamar = ' × ' + v.kamar + ' kamar';
+    const xKamar = ' × ' + kamar + ' kamar';
     const parts = [
-      ['Tiket pesawat', rp(v.tiket) + xOrang, v.tiket * orang],
-      ['Visa + asuransi', sar(v.visa) + xOrang, v.visa * v.kurs * orang],
-      ['Hotel Madinah', sar(v.hmed) + ' × ' + v.nmed + ' malam' + xKamar, v.hmed * v.nmed * v.kamar * v.kurs],
-      ['Hotel Makkah', sar(v.hmak) + ' × ' + v.nmak + ' malam' + xKamar, v.hmak * v.nmak * v.kamar * v.kurs],
-      ['Transportasi lokal', sar(v.trans) + xOrang, v.trans * v.kurs * orang],
-      ['Makan', sar(v.makan) + ' × ' + days + ' hari' + xOrang, v.makan * days * v.kurs * orang],
-      ['Vaksin, SIM, lain-lain', rp(v.lain) + xOrang, v.lain * orang],
+      ['Tiket pesawat', uang(val('tiket')) + xOrang, val('tiket') * orang],
+      ['Visa + asuransi', uang(val('visa')) + xOrang, val('visa') * orang],
+      ['Hotel Madinah', uang(val('hmed')) + ' × ' + nmed + ' malam' + xKamar, val('hmed') * nmed * kamar],
+      ['Hotel Makkah', uang(val('hmak')) + ' × ' + nmak + ' malam' + xKamar, val('hmak') * nmak * kamar],
+      ['Transportasi lokal', uang(val('trans')) + xOrang, val('trans') * orang],
+      ['Makan', uang(val('makan')) + ' × ' + days + ' hari' + xOrang, val('makan') * days * orang],
+      ['Vaksin, SIM, lain-lain', uang(val('lain')) + xOrang, val('lain') * orang],
     ];
     const total = parts.reduce((s, p) => s + p[2], 0);
-    document.getElementById('calc-total').textContent = rp(total);
-    document.getElementById('calc-per').textContent = rp(total / orang) + ' / orang';
+    document.getElementById('calc-total').textContent = uang(total);
+    document.getElementById('calc-per').textContent = uang(total / orang) + ' / orang';
     document.getElementById('calc-breakdown').innerHTML =
-      parts.map(([k, d, x]) => `<dt>${k}<small>${d}</small></dt><dd>${rp(x)}</dd>`).join('') +
-      `<dt class="calc-kurs">Kurs: 1 SAR = ${rp(v.kurs)}</dt>`;
+      parts.map(([k, d, x]) => `<dt>${k}<small>${d}</small></dt><dd>${uang(x)}</dd>`).join('') +
+      `<dt class="calc-kurs">Kurs: 1 SAR = Rp ${fmt(kurs)}</dt>`;
   }
+
+  moneyEls.forEach(el => el.addEventListener('input', () => {
+    reformat(el);
+    const v = parseNum(el.value);
+    canon[el.name] = base[el.name] === cur ? v
+      : cur === 'sar' ? v * kurs : v / (kurs || 1);
+  }));
+  kursEl.addEventListener('input', () => {
+    reformat(kursEl);
+    const v = parseNum(kursEl.value);
+    if (v > 0) { kurs = v; renderInputs(kursEl); }
+  });
   form.addEventListener('input', calc);
-  document.querySelectorAll('.presets .chip').forEach(btn => btn.addEventListener('click', () => {
-    form.elements.hmed.value = btn.dataset.med;
-    form.elements.hmak.value = btn.dataset.mak;
+  document.querySelectorAll('.calc-cur .chip').forEach(btn => btn.addEventListener('click', () => {
+    cur = btn.dataset.cur;
+    store.set('calc-cur', cur);
+    renderInputs();
     calc();
   }));
+  document.querySelectorAll('.presets:not(.calc-cur) .chip').forEach(btn => btn.addEventListener('click', () => {
+    canon.hmed = +btn.dataset.med;
+    canon.hmak = +btn.dataset.mak;
+    renderInputs();
+    calc();
+  }));
+  renderInputs();
   calc();
 
   // Penghitung putaran tawaf & sa'i (tersimpan agar aman jika halaman dimuat ulang)

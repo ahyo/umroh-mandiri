@@ -815,28 +815,34 @@
         <button type="button" class="chip" data-med="950" data-mak="1000">Mewah</button>
       </div>
 
+      <div class="presets calc-cur" role="group" aria-label="Mata uang">
+        <span class="muted">Tampilkan dalam:</span>
+        <button type="button" class="chip" data-cur="idr">Rupiah (Rp)</button>
+        <button type="button" class="chip" data-cur="sar">Riyal (SAR)</button>
+      </div>
+
       <div class="calc">
         <form class="calc-form" id="calc" autocomplete="off">
-          <label>Kurs 1 SAR (Rp)
-            <input type="number" name="kurs" value="4400" min="0" step="50">
+          <label>Kurs 1 SAR
+            <span class="money-in"><span class="cur-fixed">Rp</span><input type="text" inputmode="decimal" name="kurs" value="4.400"></span>
           </label>
           <label>Jumlah jemaah
             <input type="number" name="orang" value="1" min="1" step="1">
           </label>
-          <label>Tiket pesawat PP per orang (Rp)
-            <input type="number" name="tiket" value="13000000" min="0" step="100000">
+          <label>Tiket pesawat PP per orang
+            <span class="money-in"><span class="cur">Rp</span><input type="text" inputmode="decimal" name="tiket" data-money data-base="idr" value="13.000.000"></span>
           </label>
-          <label>Visa umroh + asuransi per orang (SAR)
-            <input type="number" name="visa" value="500" min="0" step="10">
+          <label>Visa umroh + asuransi per orang
+            <span class="money-in"><span class="cur">SAR</span><input type="text" inputmode="decimal" name="visa" data-money data-base="sar" value="500"></span>
           </label>
-          <label>Hotel Madinah per kamar/malam (SAR)
-            <input type="number" name="hmed" value="450" min="0" step="10">
+          <label>Hotel Madinah per kamar/malam
+            <span class="money-in"><span class="cur">SAR</span><input type="text" inputmode="decimal" name="hmed" data-money data-base="sar" value="450"></span>
           </label>
           <label>Malam di Madinah
             <input type="number" name="nmed" value="4" min="0" step="1">
           </label>
-          <label>Hotel Makkah per kamar/malam (SAR)
-            <input type="number" name="hmak" value="600" min="0" step="10">
+          <label>Hotel Makkah per kamar/malam
+            <span class="money-in"><span class="cur">SAR</span><input type="text" inputmode="decimal" name="hmak" data-money data-base="sar" value="600"></span>
           </label>
           <label>Malam di Makkah
             <input type="number" name="nmak" value="5" min="0" step="1">
@@ -844,14 +850,14 @@
           <label>Jumlah kamar (maks. 4 orang/kamar)
             <input type="number" name="kamar" value="1" min="1" step="1">
           </label>
-          <label>Transportasi lokal per orang (SAR)
-            <input type="number" name="trans" value="600" min="0" step="10">
+          <label>Transportasi lokal per orang
+            <span class="money-in"><span class="cur">SAR</span><input type="text" inputmode="decimal" name="trans" data-money data-base="sar" value="600"></span>
           </label>
-          <label>Makan per orang/hari (SAR)
-            <input type="number" name="makan" value="80" min="0" step="5">
+          <label>Makan per orang/hari
+            <span class="money-in"><span class="cur">SAR</span><input type="text" inputmode="decimal" name="makan" data-money data-base="sar" value="80"></span>
           </label>
-          <label>Vaksin, SIM, lain-lain per orang (Rp)
-            <input type="number" name="lain" value="1500000" min="0" step="50000">
+          <label>Vaksin, SIM, lain-lain per orang
+            <span class="money-in"><span class="cur">Rp</span><input type="text" inputmode="decimal" name="lain" data-money data-base="idr" value="1.500.000"></span>
           </label>
         </form>
 
