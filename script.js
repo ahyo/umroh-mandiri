@@ -84,25 +84,28 @@
     document.querySelectorAll('.calc-cur .chip').forEach(b => b.classList.toggle('on', b.dataset.cur === cur));
   }
 
-  function calc() {
+  function calc(e) {
     const num = n => Math.max(0, parseFloat(form.elements[n].value) || 0);
     const orang = Math.max(1, num('orang'));
-    // Harga hotel dipasang per kamar, lalu dibagi penghuninya (maksimal 4 orang)
-    const perKamarEl = form.elements.perkamar;
-    if (num('perkamar') > PER_KAMAR) perKamarEl.value = PER_KAMAR;
-    const perKamar = Math.min(PER_KAMAR, Math.max(1, num('perkamar')));
-    const kamar = Math.ceil(orang / perKamar);
+    // Satu kamar maksimal 4 orang: kamar ikut jumlah jemaah, boleh ditambah manual
+    const minKamar = Math.ceil(orang / PER_KAMAR);
+    const kamarEl = form.elements.kamar;
+    kamarEl.min = minKamar;
+    if ((e && e.target === form.elements.orang) || num('kamar') < minKamar) kamarEl.value = minKamar;
+    const kamar = Math.max(minKamar, num('kamar'));
     const nmed = num('nmed'), nmak = num('nmak');
     const days = nmed + nmak + 1;
     const xOrang = ' × ' + orang + ' orang';
-    const bagi = ' ÷ ' + perKamar + ' orang/kamar';
+    const xKamar = ' × ' + kamar + ' kamar';
+    // Kamar dibayar utuh, lalu ditampilkan juga bagian tiap jemaah
+    const hotel = (p, malam) => p * malam * kamar;
+    const rinciHotel = (p, malam) =>
+      uang(p) + ' × ' + malam + ' malam' + xKamar + ' · ' + uang(hotel(p, malam) / orang) + '/orang';
     const parts = [
       ['Tiket pesawat', uang(val('tiket')) + xOrang, val('tiket') * orang],
       ['Visa + asuransi', uang(val('visa')) + xOrang, val('visa') * orang],
-      ['Hotel Madinah', uang(val('hmed')) + bagi + ' × ' + nmed + ' malam' + xOrang,
-        val('hmed') / perKamar * nmed * orang],
-      ['Hotel Makkah', uang(val('hmak')) + bagi + ' × ' + nmak + ' malam' + xOrang,
-        val('hmak') / perKamar * nmak * orang],
+      ['Hotel Madinah', rinciHotel(val('hmed'), nmed), hotel(val('hmed'), nmed)],
+      ['Hotel Makkah', rinciHotel(val('hmak'), nmak), hotel(val('hmak'), nmak)],
       ['Transportasi lokal', uang(val('trans')) + xOrang, val('trans') * orang],
       ['Makan', uang(val('makan')) + ' × ' + days + ' hari' + xOrang, val('makan') * days * orang],
       ['Vaksin, SIM, lain-lain', uang(val('lain')) + xOrang, val('lain') * orang],
@@ -112,7 +115,7 @@
     document.getElementById('calc-per').textContent = uang(total / orang) + ' / orang';
     document.getElementById('calc-breakdown').innerHTML =
       parts.map(([k, d, x]) => `<dt>${k}<small>${d}</small></dt><dd>${uang(x)}</dd>`).join('') +
-      `<dt class="calc-kurs">Kurs: 1 SAR = Rp ${fmt(kurs)} · Perlu ${kamar} kamar untuk ${orang} jemaah</dt>`;
+      `<dt class="calc-kurs">Kurs: 1 SAR = Rp ${fmt(kurs)} · ${kamar} kamar untuk ${orang} jemaah</dt>`;
   }
 
   moneyEls.forEach(el => el.addEventListener('input', () => {

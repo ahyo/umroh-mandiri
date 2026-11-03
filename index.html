@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261103">
+  <link rel="stylesheet" href="style.css?v=20261103b">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230f5132'/><rect x='18' y='20' width='28' height='28' fill='%23111'/><rect x='18' y='26' width='28' height='4' fill='%23d4a94a'/></svg>">
 </head>
 <body>
@@ -807,7 +807,7 @@
     <div class="wrap">
       <h2>Kalkulator estimasi biaya</h2>
       <p class="section-lead">Angka bawaan adalah <strong>perkiraan kasar per orang</strong> untuk program 10 hari. Harga sangat bergantung pada musim (Ramadhan & liburan jauh lebih mahal), jadi ubah sesuai harga yang Anda temukan.</p>
-      <p class="section-lead">Harga hotel diisi <strong>per kamar</strong>, lalu dibagi jumlah penghuni kamar. Satu kamar umumnya diisi maksimal 4 orang; isi 1 bila Anda ingin kamar sendiri.</p>
+      <p class="section-lead">Harga hotel dihitung <strong>per kamar</strong>, dan jumlah kamar mengikuti jumlah jemaah: maksimal 4 orang per kamar, jadi 5 jemaah berarti 2 kamar. Rincian biaya juga menampilkan bagian tiap orang. Anda boleh menambah jumlah kamar bila ingin lebih lega.</p>
 
       <div class="presets" role="group" aria-label="Preset harga hotel">
         <span class="muted">Isi harga hotel cepat:</span>
@@ -848,8 +848,8 @@
           <label>Malam di Makkah
             <input type="number" name="nmak" value="5" min="0" step="1">
           </label>
-          <label>Orang per kamar (maks. 4)
-            <input type="number" name="perkamar" value="4" min="1" max="4" step="1">
+          <label>Jumlah kamar (maks. 4 orang/kamar)
+            <input type="number" name="kamar" value="1" min="1" step="1">
           </label>
           <label>Transportasi lokal per orang
             <span class="money-in"><span class="cur">SAR</span><input type="text" inputmode="decimal" name="trans" data-money data-base="sar" value="600"></span>
@@ -955,6 +955,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=20261103"></script>
+<script src="script.js?v=20261103b"></script>
 </body>
 </html>
