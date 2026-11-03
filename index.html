@@ -807,6 +807,7 @@
     <div class="wrap">
       <h2>Kalkulator estimasi biaya</h2>
       <p class="section-lead">Angka bawaan adalah <strong>perkiraan kasar per orang</strong> untuk program 10 hari. Harga sangat bergantung pada musim (Ramadhan & liburan jauh lebih mahal), jadi ubah sesuai harga yang Anda temukan.</p>
+      <p class="section-lead">Harga hotel diisi <strong>per kamar</strong>, lalu dibagi jumlah penghuni kamar. Satu kamar umumnya diisi maksimal 4 orang; isi 1 bila Anda ingin kamar sendiri.</p>
 
       <div class="presets" role="group" aria-label="Preset harga hotel">
         <span class="muted">Isi harga hotel cepat:</span>
@@ -847,8 +848,8 @@
           <label>Malam di Makkah
             <input type="number" name="nmak" value="5" min="0" step="1">
           </label>
-          <label>Jumlah kamar (maks. 4 orang/kamar)
-            <input type="number" name="kamar" value="1" min="1" step="1">
+          <label>Orang per kamar (maks. 4)
+            <input type="number" name="perkamar" value="4" min="1" max="4" step="1">
           </label>
           <label>Transportasi lokal per orang
             <span class="money-in"><span class="cur">SAR</span><input type="text" inputmode="decimal" name="trans" data-money data-base="sar" value="600"></span>
