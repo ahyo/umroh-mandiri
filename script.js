@@ -24,9 +24,33 @@
     const open = nav.classList.toggle('open');
     menuBtn.setAttribute('aria-expanded', open);
   });
+
+  // Menu bertingkat: satu grup terbuka pada satu waktu
+  const navGroups = [...nav.querySelectorAll('.nav-group')];
+  function closeGroups(except) {
+    navGroups.forEach(g => {
+      if (g === except) return;
+      g.classList.remove('open');
+      g.querySelector('.nav-top').setAttribute('aria-expanded', 'false');
+    });
+  }
+  navGroups.forEach(g => {
+    const btn = g.querySelector('.nav-top');
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const open = !g.classList.contains('open');
+      closeGroups(g);
+      g.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open);
+    });
+  });
+  document.addEventListener('click', e => { if (!nav.contains(e.target)) closeGroups(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeGroups(); });
+
   nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
     nav.classList.remove('open');
     menuBtn.setAttribute('aria-expanded', 'false');
+    closeGroups();
   }));
 
   // Scrollspy
@@ -36,6 +60,9 @@
     entries.forEach(e => {
       if (e.isIntersecting) {
         links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+        // Tandai juga grup induknya agar terlihat di menu yang tertutup
+        navGroups.forEach(g => g.querySelector('.nav-top')
+          .classList.toggle('active', !!g.querySelector('a.active')));
       }
     });
   }, { rootMargin: '-40% 0px -55% 0px' });

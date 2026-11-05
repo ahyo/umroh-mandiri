@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261103b">
+  <link rel="stylesheet" href="style.css?v=20261105">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230f5132'/><rect x='18' y='20' width='28' height='28' fill='%23111'/><rect x='18' y='26' width='28' height='4' fill='%23d4a94a'/></svg>">
 </head>
 <body>
@@ -21,16 +21,32 @@
     </a>
     <button class="menu-btn" aria-label="Buka menu" aria-expanded="false" aria-controls="nav">☰</button>
     <nav id="nav" class="nav">
-      <a href="#dasar">Syarat</a>
-      <a href="#persiapan">Persiapan</a>
-      <a href="#hotel">Hotel</a>
-      <a href="peta.html">Peta</a>
-      <a href="#perjalanan">Perjalanan</a>
-      <a href="#tatacara">Tata Cara</a>
-      <a href="#sholat">Sholat</a>
-      <a href="quran.html">Al-Qur’an</a>
-      <a href="#biaya">Biaya</a>
-      <a href="#checklist">Checklist</a>
+      <div class="nav-group">
+        <button type="button" class="nav-top" aria-expanded="false">Persiapan<span class="caret" aria-hidden="true">▾</span></button>
+        <div class="nav-menu">
+          <a href="#dasar">Syarat &amp; dasar hukum</a>
+          <a href="#persiapan">Langkah persiapan</a>
+          <a href="#hotel">Rekomendasi hotel</a>
+          <a href="#biaya">Kalkulator biaya</a>
+          <a href="#checklist">Checklist bawaan</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" class="nav-top" aria-expanded="false">Perjalanan<span class="caret" aria-hidden="true">▾</span></button>
+        <div class="nav-menu">
+          <a href="#perjalanan">Rute hari demi hari</a>
+          <a href="peta.html">Peta Makkah &amp; Madinah</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button type="button" class="nav-top" aria-expanded="false">Ibadah<span class="caret" aria-hidden="true">▾</span></button>
+        <div class="nav-menu">
+          <a href="#tatacara">Tata cara umroh</a>
+          <a href="#ziarah">Ziarah sesuai sunnah</a>
+          <a href="#sholat">Bersuci &amp; sholat</a>
+          <a href="quran.html">Al-Qur’an 30 juz</a>
+        </div>
+      </div>
       <a href="#faq">FAQ</a>
       <button class="theme-btn" aria-label="Ganti tema terang/gelap" title="Ganti tema">◐</button>
     </nav>
@@ -637,6 +653,214 @@
     </div>
   </section>
 
+  <!-- ZIARAH -->
+  <section id="ziarah" class="section">
+    <div class="wrap">
+      <h2>Ziarah sesuai sunnah</h2>
+      <p class="section-lead">Ziarah bukan rukun umroh, tetapi hampir semua jemaah melakukannya. Bagian ini merangkum <strong>mana yang ada tuntunannya</strong> dan mana yang hanya kebiasaan, supaya perjalanan Anda tetap di atas sunnah dan jauh dari hal yang dilarang.</p>
+
+      <div class="card card-warn">
+        <h3>Tiga pegangan sebelum berangkat ziarah</h3>
+        <ul class="dots">
+          <li><strong>Niat safar adalah ke masjidnya, bukan ke kuburannya.</strong> Nabi ﷺ bersabda, “Tidak boleh mengadakan perjalanan (ibadah) kecuali ke tiga masjid: Masjidil Haram, masjidku ini, dan Masjidil Aqsha.” (HR. Bukhari no. 1189, Muslim no. 1397). Jadi niatkan safar untuk sholat di Masjid Nabawi; ziarah ke makam Nabi ﷺ dilakukan setelah sampai di sana.</li>
+          <li><strong>Doa hanya kepada Allah.</strong> Di depan makam siapa pun, termasuk makam Rasulullah ﷺ, jemaah mengucapkan salam lalu pergi. Meminta hajat, rezeki, atau kesembuhan kepada penghuni kubur termasuk perkara yang membatalkan tauhid.</li>
+          <li><strong>Tidak semua tempat bersejarah itu tempat ibadah.</strong> Banyak lokasi di Makkah dan Madinah boleh dilihat sebagai pelajaran sejarah, tetapi tidak ada sholat, doa, atau amalan khusus di sana.</li>
+        </ul>
+      </div>
+
+      <h3 class="city mt">🕌 Ziarah di Madinah</h3>
+      <div class="accordion">
+
+        <details open>
+          <summary>1. Masjid Nabawi: sholat lebih dulu</summary>
+          <div class="acc-body">
+            <p>Begitu sampai, yang pertama dilakukan adalah masuk masjid dan sholat sunnah <strong>tahiyyatul masjid</strong> 2 rakaat, bukan langsung menuju makam.</p>
+            <ul class="dots">
+              <li>Masuk dengan <strong>kaki kanan</strong> sambil membaca doa masuk masjid, keluar dengan kaki kiri.</li>
+              <li>Keutamaannya: “Sholat di masjidku ini lebih utama daripada 1.000 sholat di masjid lainnya, kecuali Masjidil Haram.” (HR. Bukhari no. 1190, Muslim no. 1394).</li>
+              <li>Perbanyak sholat berjamaah, membaca Al-Qur’an, dan berdzikir selama di Madinah. Inilah inti kunjungan, bukan berkeliling tempat ziarah.</li>
+            </ul>
+            <div class="dua">
+              <p class="ar">اللّٰهُمَّ افْتَحْ لِيْ أَبْوَابَ رَحْمَتِكَ</p>
+              <p class="lat">Allāhummaftah lī abwāba rahmatik.</p>
+              <p class="tr">“Ya Allah, bukakanlah untukku pintu-pintu rahmat-Mu.” (doa masuk masjid, HR. Muslim no. 713)</p>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>2. Raudhah: tempat sholat dan berdoa</summary>
+          <div class="acc-body">
+            <p>Raudhah adalah area antara rumah (kamar) Nabi ﷺ dan mimbar beliau.</p>
+            <div class="dua">
+              <p class="ar">مَا بَيْنَ بَيْتِيْ وَمِنْبَرِيْ رَوْضَةٌ مِنْ رِيَاضِ الْجَنَّةِ</p>
+              <p class="lat">Mā baina baitī wa minbarī raudhatun min riyādhil jannah.</p>
+              <p class="tr">“Antara rumahku dan mimbarku terdapat taman dari taman-taman surga.” (HR. Bukhari no. 1196, Muslim no. 1391)</p>
+            </div>
+            <ul class="dots">
+              <li><strong>Yang dilakukan di sana:</strong> sholat sunnah dua rakaat dan berdoa kepada Allah. Tidak ada bacaan khusus yang wajib dibaca di Raudhah.</li>
+              <li><strong>Izin (tasreh) wajib</strong> lewat aplikasi Nusuk, gratis, dengan slot laki-laki dan perempuan terpisah. Kuota cepat habis, jadi pantau sejak jadwal Anda pasti.</li>
+              <li><strong>Jangan berdesakan dan menyakiti orang lain.</strong> Petugas biasanya hanya memberi waktu beberapa menit. Sholat dua rakaat dengan tenang lebih baik daripada memaksa berlama-lama.</li>
+              <li>Tidak ada tuntunan mengusap tiang, mimbar, atau dinding Raudhah untuk mencari berkah.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>3. Salam di makam Rasulullah ﷺ, Abu Bakar, dan Umar</summary>
+          <div class="acc-body">
+            <p>Makam beliau berada di dalam kamar Aisyah رضي الله عنها, di sisi timur Raudhah. Caranya sederhana: berdiri menghadap makam dengan adab, ucapkan salam, lalu bergeser ke kanan dua kali. Tidak perlu lama; para sahabat mengucapkan salam lalu pergi.</p>
+            <h4>a. Di depan makam Nabi ﷺ</h4>
+            <div class="dua">
+              <p class="ar">السَّلَامُ عَلَيْكَ يَا رَسُوْلَ اللّٰهِ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ</p>
+              <p class="lat">Assalāmu ‘alaika yā Rasūlallāh wa rahmatullāhi wa barakātuh.</p>
+              <p class="tr">“Semoga keselamatan, rahmat, dan berkah Allah tercurah kepadamu, wahai Rasulullah.”</p>
+            </div>
+            <h4>b. Bergeser ±1 langkah ke kanan, makam Abu Bakar رضي الله عنه</h4>
+            <div class="dua">
+              <p class="ar">السَّلَامُ عَلَيْكَ يَا أَبَا بَكْرٍ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ</p>
+              <p class="lat">Assalāmu ‘alaika yā Abā Bakrin wa rahmatullāhi wa barakātuh.</p>
+            </div>
+            <h4>c. Bergeser lagi ke kanan, makam Umar bin Khaththab رضي الله عنه</h4>
+            <div class="dua">
+              <p class="ar">السَّلَامُ عَلَيْكَ يَا عُمَرُ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ</p>
+              <p class="lat">Assalāmu ‘alaika yā ‘Umar wa rahmatullāhi wa barakātuh.</p>
+            </div>
+            <p>Boleh ditambah doa kebaikan untuk mereka, misalnya memohon kepada Allah agar membalas jasa beliau bertiga dengan sebaik-baik balasan.</p>
+            <ul class="ticks">
+              <li>Suara <strong>pelan dan sopan</strong>, tidak berteriak dan tidak mengangkat suara di dalam masjid.</li>
+              <li>Jangan menyentuh, mengusap, atau mencium jeruji dan dinding makam.</li>
+              <li>Jangan berdoa sambil <strong>menghadap makam</strong>; jika ingin berdoa panjang, menghadaplah ke kiblat.</li>
+              <li>Jangan thawaf (mengelilingi) makam, dan jangan bernadzar kepadanya.</li>
+              <li>Salam tidak harus diucapkan di depan makam. Sabda Nabi ﷺ: “Bershalawatlah kepadaku, karena shalawat kalian sampai kepadaku di mana pun kalian berada.” (HR. Abu Dawud no. 2042)</li>
+            </ul>
+            <div class="tip">Bagi jemaah perempuan, area makam di sisi dalam umumnya tidak dapat diakses. Ini tidak mengurangi apa pun: ucapkan salam dan shalawat dari tempat Anda berada, dan pahalanya tetap sampai.</div>
+          </div>
+        </details>
+
+        <details>
+          <summary>4. Pemakaman Baqi’</summary>
+          <div class="acc-body">
+            <p>Di sinilah dimakamkan banyak sahabat, istri, dan putra-putri Nabi ﷺ. Ziarah kubur memang disunnahkan karena mengingatkan akhirat: “Dahulu aku melarang kalian berziarah kubur, maka sekarang berziarahlah.” (HR. Muslim no. 977). Letaknya persis di sebelah timur Masjid Nabawi, umumnya dibuka setelah Subuh dan setelah Ashar, dan dalam praktiknya hanya untuk laki-laki.</p>
+            <div class="dua">
+              <p class="ar">السَّلَامُ عَلَيْكُمْ أَهْلَ الدِّيَارِ مِنَ الْمُؤْمِنِيْنَ وَالْمُسْلِمِيْنَ، وَإِنَّا إِنْ شَاءَ اللّٰهُ بِكُمْ لَاحِقُوْنَ، نَسْأَلُ اللّٰهَ لَنَا وَلَكُمُ الْعَافِيَةَ</p>
+              <p class="lat">Assalāmu ‘alaikum ahlad-diyāri minal mu’minīna wal muslimīn, wa innā in syā’allāhu bikum lāhiqūn, nas’alullāha lanā wa lakumul ‘āfiyah.</p>
+              <p class="tr">“Semoga keselamatan atas kalian, wahai penghuni negeri ini dari kalangan mukminin dan muslimin. Insya Allah kami akan menyusul kalian. Kami memohon kepada Allah keselamatan untuk kami dan untuk kalian.” (HR. Muslim no. 975)</p>
+            </div>
+            <p class="muted">Ziarah kubur adalah untuk <em>mendoakan</em> yang telah wafat dan mengingat kematian, bukan untuk meminta kepada mereka.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>5. Masjid Quba’: pahala seperti umroh</summary>
+          <div class="acc-body">
+            <p>Masjid pertama yang dibangun atas dasar takwa, ±4 km dari Masjid Nabawi. Inilah satu-satunya ziarah di luar Masjid Nabawi yang punya keutamaan khusus dalam hadits.</p>
+            <div class="dua">
+              <p class="ar">مَنْ تَطَهَّرَ فِيْ بَيْتِهِ ثُمَّ أَتَى مَسْجِدَ قُبَاءٍ فَصَلَّى فِيْهِ صَلَاةً كَانَ لَهُ كَأَجْرِ عُمْرَةٍ</p>
+              <p class="lat">Man tathahhara fī baitihi tsumma atā masjida Qubā’ fa shallā fīhi shalātan kāna lahu ka ajri ‘umrah.</p>
+              <p class="tr">“Barangsiapa bersuci di rumahnya kemudian mendatangi Masjid Quba’ lalu sholat di dalamnya, baginya pahala seperti umroh.” (HR. Ibnu Majah no. 1412 dan An-Nasa’i)</p>
+            </div>
+            <ul class="ticks">
+              <li><strong>Berwudhu dari penginapan</strong>, bukan di masjidnya — inilah syarat yang disebut dalam hadits.</li>
+              <li>Sholat <strong>dua rakaat</strong> di dalamnya.</li>
+              <li>Nabi ﷺ biasa mendatanginya <strong>setiap hari Sabtu</strong>, berjalan kaki maupun berkendara (HR. Bukhari no. 1193, Muslim no. 1399). Jika jadwal Anda memungkinkan, pilih hari Sabtu.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>6. Uhud, Qiblatain, dan tempat lain</summary>
+          <div class="acc-body">
+            <ul class="dots">
+              <li><strong>Jabal Uhud &amp; makam syuhada.</strong> Boleh dikunjungi untuk mengucapkan salam kepada para syuhada dan mengambil pelajaran. Nabi ﷺ bersabda tentang Uhud, “Ini adalah gunung yang mencintai kami dan kami mencintainya.” (HR. Bukhari no. 4083). Tidak ada sholat atau doa khusus di gunungnya.</li>
+              <li><strong>Masjid Qiblatain.</strong> Tempat turunnya perintah pindah kiblat. Boleh disholati sebagai masjid biasa, tetapi tidak ada keutamaan khusus yang sahih untuknya.</li>
+              <li><strong>Masjid Sab’ah (tujuh masjid) di area Khandaq.</strong> Tidak ada tuntunan mengunjunginya satu per satu, apalagi sholat tujuh kali di sana.</li>
+              <li><strong>Kebun kurma, Jabal Magnet, museum, pasar kurma.</strong> Murni wisata dan belanja. Tidak ada nilai ibadah khusus, dan memang tidak masalah selama tidak diyakini sebagai bagian dari ibadah.</li>
+            </ul>
+            <div class="tip">City tour Quba – Qiblatain – Uhud biasanya 3–4 jam dengan taksi sewa ±SAR 100–150 per mobil. Lihat semua titiknya di <a href="peta.html">peta Makkah &amp; Madinah</a>.</div>
+          </div>
+        </details>
+
+      </div>
+
+      <h3 class="city mt">🕋 Ziarah di Makkah</h3>
+      <p>Perlu diketahui sejak awal: <strong>di Makkah tidak ada ritual ziarah seperti di Madinah.</strong> Ibadah di Makkah adalah umroh, tawaf, dan sholat di Masjidil Haram. Tempat-tempat bersejarah di bawah ini boleh dilihat, tetapi tidak ada sholat, doa, atau amalan khusus padanya.</p>
+      <div class="accordion">
+
+        <details open>
+          <summary>1. Masjidil Haram: inti ibadah di Makkah</summary>
+          <div class="acc-body">
+            <ul class="dots">
+              <li>“Sholat di Masjidil Haram lebih utama daripada 100.000 sholat di masjid lainnya.” (HR. Ibnu Majah no. 1406). Perbanyak sholat berjamaah di sini selagi bisa.</li>
+              <li><strong>Tawaf sunnah</strong> kapan saja tanpa ihram, selama kondisi badan memungkinkan. Ini amalan yang tidak bisa dilakukan di tempat lain mana pun.</li>
+              <li>Yang disunnahkan diusap hanya <strong>Hajar Aswad</strong> dan <strong>Rukun Yamani</strong>. Dinding Ka’bah, kiswah, Hijir Ismail, dan Maqam Ibrahim tidak diusap untuk mencari berkah.</li>
+              <li>Jangan memaksakan diri mencium Hajar Aswad sampai berdesakan dan menyakiti orang lain. Cukup berisyarat dengan tangan sambil bertakbir.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>2. Jabal Nur (Gua Hira) &amp; Jabal Tsur</summary>
+          <div class="acc-body">
+            <p>Gua Hira adalah tempat turunnya wahyu pertama, dan Gua Tsur tempat persembunyian Nabi ﷺ bersama Abu Bakar saat hijrah. Keduanya punya nilai sejarah besar.</p>
+            <ul class="dots">
+              <li><strong>Mendakinya bukan sunnah.</strong> Nabi ﷺ tidak pernah kembali ke Gua Hira setelah diangkat menjadi nabi, dan para sahabat tidak menjadikannya tempat ziarah.</li>
+              <li>Tidak ada sholat, doa, atau nadzar khusus di puncaknya, dan tidak ada keutamaan untuk meninggalkan tulisan atau benda di sana.</li>
+              <li>Pendakian berat (±1–2 jam) di bawah terik. Banyak jemaah justru kelelahan sehingga ibadah di Masjidil Haram terganggu. Cukup melihat dari bawah sudah memadai.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>3. Arafah, Mina, Muzdalifah, dan Jabal Rahmah</summary>
+          <div class="acc-body">
+            <ul class="dots">
+              <li>Semuanya adalah tempat <strong>ibadah haji</strong>, bukan tempat ziarah umroh. Di luar musim haji, tidak ada amalan khusus di sana.</li>
+              <li><strong>Jabal Rahmah</strong> tidak memiliki keutamaan khusus. Naik ke tugunya, sholat di sana, menulis nama, atau mengikat kain sebagai “doa jodoh” tidak ada dasarnya sama sekali.</li>
+              <li>Mengunjunginya sebagai pengenalan rute haji tetap bermanfaat, terutama bila Anda berniat berhaji kelak.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>4. Masjid Tan’im &amp; Ji’ranah: untuk miqat, bukan ziarah</summary>
+          <div class="acc-body">
+            <p>Dua masjid ini dikunjungi hanya bila Anda hendak mengambil <strong>miqat untuk umroh tambahan</strong>, bukan karena masjidnya punya keutamaan khusus.</p>
+            <ul class="dots">
+              <li>Dasarnya adalah perintah Nabi ﷺ kepada Aisyah رضي الله عنها untuk berumroh dari Tan’im (HR. Bukhari no. 1785, Muslim no. 1211) — dan itu terjadi karena kondisi khusus beliau, bukan sebagai rutinitas.</li>
+              <li>Para ulama berbeda pendapat tentang memperbanyak umroh berulang-ulang dalam satu safar. Yang disepakati lebih utama adalah <strong>memperbanyak tawaf</strong> di Masjidil Haram.</li>
+              <li>Jika tetap ingin umroh kedua, pastikan kondisi fisik kuat dan tidak mengorbankan sholat berjamaah.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>5. Tempat yang sering ditawarkan tetapi tanpa dasar</summary>
+          <div class="acc-body">
+            <ul class="dots">
+              <li><strong>Rumah kelahiran Nabi ﷺ (Maulid)</strong> dan <strong>Masjid Jin.</strong> Tidak ada tuntunan sholat atau berdoa di sana.</li>
+              <li><strong>Pemakaman Ma’la.</strong> Berlaku aturan ziarah kubur biasa: mengucapkan salam dan mendoakan, tanpa meminta kepada penghuninya.</li>
+              <li>Mengambil tanah, batu, atau air dari tempat tertentu untuk “berkah” tidak ada dasarnya. Air zamzam adalah pengecualian, dan itu pun diminum sambil berdoa kepada Allah, bukan kepada sumurnya.</li>
+            </ul>
+          </div>
+        </details>
+
+      </div>
+
+      <div class="card card-warn mt">
+        <h3>Ringkasan: hindari ini di mana pun</h3>
+        <ul class="dots">
+          <li>Meminta hajat kepada Nabi ﷺ, wali, atau penghuni kubur.</li>
+          <li>Mengusap atau mencium dinding, jeruji, tiang, kiswah, dan pintu untuk mencari berkah.</li>
+          <li>Thawaf mengelilingi makam atau bangunan selain Ka’bah.</li>
+          <li>Sholat dengan sengaja menghadap kuburan.</li>
+          <li>Bernadzar, menyembelih, atau meninggalkan uang dan kain di suatu tempat sebagai persembahan.</li>
+          <li>Mengganggu, mendorong, dan menyakiti jemaah lain demi mengejar “tempat utama”. Menjaga hak sesama muslim lebih berat timbangannya daripada keutamaan yang diperebutkan.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <!-- BERSUCI & SHOLAT -->
   <section id="sholat" class="section">
     <div class="wrap">
@@ -955,6 +1179,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=20261103b"></script>
+<script src="script.js?v=20261105"></script>
 </body>
 </html>
