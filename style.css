@@ -227,6 +227,14 @@ details[open] summary { border-bottom: 1px solid var(--border); }
 }
 .dua .lat { font-style: italic; margin: 0 0 4px; color: var(--primary); font-weight: 600; }
 .dua .tr { margin: 0; color: var(--muted); font-size: .95rem; }
+/* Versi ringkas untuk daftar bacaan per putaran */
+.dua-sm { padding: 10px 14px; margin: 6px 0 0; }
+.dua-sm .ar { font-size: 1.3rem; line-height: 1.9; margin-bottom: 2px; }
+.dua-sm .lat { font-size: .92rem; }
+.dua-sm .tr { font-size: .88rem; }
+ol.num.putaran li { margin-bottom: 16px; }
+ol.num.putaran .lbl { font-weight: 700; }
+ol.num.putaran .arah { color: var(--muted); font-weight: 600; font-size: .88rem; }
 
 /* Peta */
 .peta-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
