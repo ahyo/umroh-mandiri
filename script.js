@@ -154,7 +154,7 @@
   kursEl.addEventListener('input', () => {
     reformat(kursEl);
     const v = parseNum(kursEl.value);
-    if (v > 0) { kurs = v; renderInputs(kursEl); }
+    if (v > 0) { kurs = v; renderInputs(kursEl); rupiahSAR(kurs); }
   });
   form.addEventListener('input', calc);
   document.querySelectorAll('.calc-cur .chip').forEach(btn => btn.addEventListener('click', () => {
@@ -171,6 +171,7 @@
   }));
   renderInputs();
   calc();
+  rupiahSAR(kurs);
 
   // Penghitung putaran tawaf & sa'i (tersimpan agar aman jika halaman dimuat ulang)
   const statusText = {

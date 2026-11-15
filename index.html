@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261115">
+  <link rel="stylesheet" href="style.css?v=20261115b">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230f5132'/><rect x='18' y='20' width='28' height='28' fill='%23111'/><rect x='18' y='26' width='28' height='4' fill='%23d4a94a'/></svg>">
 </head>
 <body>
@@ -54,7 +54,7 @@
   </div>
 </header>
 
-<main id="top">
+<main id="top" data-rp>
 
   <!-- HERO -->
   <section class="hero">
@@ -233,6 +233,7 @@
     <div class="wrap">
       <h2>Rekomendasi hotel per budget</h2>
       <p class="section-lead">Untuk umroh mandiri, hotel <strong>wajib terdaftar dan dipesan lewat Nusuk</strong>. Tanpa itu, visa tidak akan keluar. Berikut hotel yang paling banyak dipakai jemaah Indonesia.</p>
+      <p class="section-lead small muted">Semua harga adalah <strong>per kamar per malam</strong>. Perkiraan rupiah di sampingnya memakai kurs yang Anda isi di <a href="#biaya">kalkulator biaya</a> dan ikut berubah bila kurs diganti.</p>
 
       <a class="q-cta" href="peta.html">
         <span class="q-cta-ar" aria-hidden="true">🗺️</span>
@@ -318,7 +319,7 @@
           <div class="worth">
             <p class="worth-label">⭐ Kombinasi paling <em>worth it</em> untuk mandiri</p>
             <p class="worth-combo"><strong>Makkah:</strong> Azka Al Safa + <strong>Madinah:</strong> Shaza Regency</p>
-            <p>Total 8 malam (4 + 4) sekitar <strong>SAR 2.500–3.000</strong> (±Rp 11–13 juta) per kamar untuk berdua, cukup jalan kaki ±3 menit ke masjid.</p>
+            <p>Total 8 malam (4 + 4) sekitar <strong>SAR 2.500–3.000</strong> per kamar untuk berdua, cukup jalan kaki ±3 menit ke masjid.</p>
           </div>
         </div>
       </div>
@@ -1253,7 +1254,7 @@
   </section>
 
   <!-- BIAYA -->
-  <section id="biaya" class="section section-alt">
+  <section id="biaya" class="section section-alt" data-no-rp>
     <div class="wrap">
       <h2>Kalkulator estimasi biaya</h2>
       <p class="section-lead">Angka bawaan adalah <strong>perkiraan kasar per orang</strong> untuk program 10 hari. Harga sangat bergantung pada musim (Ramadhan & liburan jauh lebih mahal), jadi ubah sesuai harga yang Anda temukan.</p>
@@ -1422,6 +1423,7 @@
   </div>
 </footer>
 
-<script src="script.js?v=20261115"></script>
+<script src="sar.js?v=20261115b"></script>
+<script src="script.js?v=20261115b"></script>
 </body>
 </html>
